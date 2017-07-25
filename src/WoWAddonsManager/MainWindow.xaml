@@ -1,0 +1,23 @@
+﻿<Window x:Class="WoWAddonsManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WoWAddonsManager"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="366" Width="568">
+    <Grid Margin="0,0,2,26">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="183*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="133*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="txtWowLocation" Height="23" Margin="10,30,140,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True" TextChanged="txtWowLocation_TextChanged"/>
+        <Button x:Name="btnBrowse" Content="Browse" Margin="0,30,22,0" Click="btnBrowse_Click" Height="23" VerticalAlignment="Top" HorizontalAlignment="Right" Width="101"/>
+        <Label Content="WoW Folder" Margin="10,0,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
+        <DataGrid x:Name="dgAddons" Margin="10,80,141,10" Grid.RowSpan="4"/>
+        <Button x:Name="btnCheckCurse" Content="Check Curse" HorizontalAlignment="Left" Margin="435,80,0,0" VerticalAlignment="Top" Width="101" Click="btnCheckCurse_Click"/>
+
+    </Grid>
+</Window>
