@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Brad\Documents\Visual Studio 2017\Projects\WoWAddonsManager\WoWAddonsManager\obj\Debug\
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\
 WoWAddonsManager
 none
 false
 DEBUG;TRACE
-C:\Users\Brad\Documents\Visual Studio 2017\Projects\WoWAddonsManager\WoWAddonsManager\App.xaml
-11151548125
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\App.xaml
+3600267349
 
-14249133509
-171910510160
-MainWindow.xaml;
+121997930320
+19407200505
+AddNewAddon.xaml;LoadingScreen.xaml;MainWindow.xaml;
 
-True
+False
 

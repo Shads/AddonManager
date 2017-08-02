@@ -24,3 +24,33 @@ c:\users\brad\documents\visual studio 2017\Projects\WoWAddonsManager\WoWAddonsMa
 C:\Users\Brad\Documents\Visual Studio 2017\Projects\WoWAddonsManager\WoWAddonsManager\bin\Debug\HtmlAgilityPack.dll
 C:\Users\Brad\Documents\Visual Studio 2017\Projects\WoWAddonsManager\WoWAddonsManager\bin\Debug\HtmlAgilityPack.pdb
 C:\Users\Brad\Documents\Visual Studio 2017\Projects\WoWAddonsManager\WoWAddonsManager\bin\Debug\HtmlAgilityPack.xml
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\WoWAddonsManager.exe.config
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\WoWAddonsManager.exe
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\WoWAddonsManager.pdb
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\HtmlAgilityPack.dll
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\Microsoft.WindowsAPICodePack.dll
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.dll
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\HtmlAgilityPack.pdb
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\HtmlAgilityPack.xml
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\Microsoft.WindowsAPICodePack.pdb
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\Microsoft.WindowsAPICodePack.xml
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.pdb
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\WoWAddonsManager.csprojResolveAssemblyReference.cache
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\MainWindow.g.cs
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\App.g.cs
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\WoWAddonsManager_MarkupCompile.cache
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\WoWAddonsManager_MarkupCompile.lref
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\MainWindow.baml
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\WoWAddonsManager.g.resources
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\WoWAddonsManager.exe
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\WoWAddonsManager.pdb
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\Newtonsoft.Json.dll
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\bin\Debug\Newtonsoft.Json.xml
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\AddNewAddon.g.cs
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\AddNewAddon.baml
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\LoadingScreen.g.cs
+D:\Git\WoWAddonsManager\src\WoWAddonsManager\obj\Debug\LoadingScreen.baml

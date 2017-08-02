@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WoWAddonsManager.Models;
+﻿using System.Threading.Tasks;
+using WoWAddonsManager.Config;
 
 namespace WoWAddonsManager.Sources
 {
     interface IAddonSource
     {
-        Task GetAvailableVersion(Addon addon);
+        Task<AddonConfigItem> GetAddonDetails(string addonUrl, bool awaitConfig = false);
+        Task GetDownloadUrl(AddonConfigItem config);
+        Task<string> GetZipFile(AddonConfigItem config);
     }
 }

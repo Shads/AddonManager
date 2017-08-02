@@ -5,19 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WoWAddonsManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="366" Width="568">
+        Title="MainWindow" Height="448.31" Width="884.79">
     <Grid Margin="0,0,2,26">
         <Grid.RowDefinitions>
-            <RowDefinition Height="183*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="133*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
         <TextBox x:Name="txtWowLocation" Height="23" Margin="10,30,140,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True" TextChanged="txtWowLocation_TextChanged"/>
-        <Button x:Name="btnBrowse" Content="Browse" Margin="0,30,22,0" Click="btnBrowse_Click" Height="23" VerticalAlignment="Top" HorizontalAlignment="Right" Width="101"/>
-        <Label Content="WoW Folder" Margin="10,0,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
-        <DataGrid x:Name="dgAddons" Margin="10,80,141,10" Grid.RowSpan="4"/>
-        <Button x:Name="btnCheckCurse" Content="Check Curse" HorizontalAlignment="Left" Margin="435,80,0,0" VerticalAlignment="Top" Width="101" Click="btnCheckCurse_Click"/>
+        <Button x:Name="btnOpen" Content="Select Folder" Margin="0,30,22,0" Click="btnBrowse_Click" Height="23" VerticalAlignment="Top" HorizontalAlignment="Right" Width="101"/>
+        <Label Content="WoW Addons Folder" Margin="10,0,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="121"/>
+        <DataGrid x:Name="dgAddons" Margin="10,80,141,0" SelectionChanged="dgAddons_SelectionChanged" SelectionMode="Single"/>
+        <Button x:Name="btnCheckCurse" Content="Check Curse" Margin="0,80,22,0" VerticalAlignment="Top" Click="btnCheckCurse_Click" Height="20" HorizontalAlignment="Right" Width="100"/>
+        <Button x:Name="btnAddItem" Content="Add New Addon" Margin="0,105,22,0" VerticalAlignment="Top" Click="btnAddItem_Click" HorizontalAlignment="Right" Width="100"/>
+        <Button x:Name="btnSetPath" Content="Set Existing Path" HorizontalAlignment="Right" Margin="0,0,22,10" Width="100" RenderTransformOrigin="0.539,2.823" Click="btnSetPath_Click" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="btnUpdateSelected" Content="Update Selected" HorizontalAlignment="Right" Margin="0,0,22,35" VerticalAlignment="Bottom" Width="100" Click="btnUpdateSelected_Click"/>
 
     </Grid>
 </Window>
