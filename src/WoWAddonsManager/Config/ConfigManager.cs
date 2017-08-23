@@ -11,9 +11,11 @@ namespace WoWAddonsManager.Config
 
         public static AddonConfig GetConfig()
         {
-            if (_config == null && File.Exists(_standardConfig))
+            if (_config == null)
             {
-                _config = JsonConvert.DeserializeObject<AddonConfig>(File.ReadAllText(_standardConfig));
+                _config = File.Exists(_standardConfig)
+                        ? JsonConvert.DeserializeObject<AddonConfig>(File.ReadAllText(_standardConfig))
+                        : new AddonConfig();
             }
 
             return _config;

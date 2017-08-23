@@ -58,7 +58,17 @@ public partial class MainWindow : Window
             var loadingScreen = new LoadingScreen(addons.Items.Count) { Owner = this };
             loadingScreen.Show();
             var source = new CurseAddonSource();
-            await source.RefreshConfig(addons, () => loadingScreen.Increment());
+
+            try
+            {
+                await source.RefreshConfig(addons, () => loadingScreen.Increment());
+            }
+            catch (Exception ex)
+            {
+                loadingScreen.Close();
+                MessageBox.Show(ex.Message, "Broken", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             dgAddons.ItemsSource = addons.Items;
             dgAddons.Items.Refresh();
@@ -111,10 +121,15 @@ public partial class MainWindow : Window
 
             EnsureArchive();
 
-            var item = (AddonConfigItem)dgAddons.SelectedItem;
-            await UpdateItem(item, null);
+            var item = dgAddons.SelectedItem as AddonConfigItem;
+            if (item != null)
+            {
+                await UpdateItem(item, null);
+                MessageBox.Show($"{item.Name} Updated!", "Update Complete", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
 
-            MessageBox.Show($"{item.Name} Updated!", "Update Complete", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show($"Nothing selected...", "You suck", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private async void btnUpdateAll_Click(object sender, RoutedEventArgs e)
@@ -182,8 +197,11 @@ public partial class MainWindow : Window
             var source = new CurseAddonSource();
             var zipPath = await source.GetZipFile(item);
 
-            ZipFile.ExtractToDirectory(zipPath, extractPath);
-            CopyFiles(extractPath, path);
+            if (!string.IsNullOrWhiteSpace(zipPath))
+            {
+                ZipFile.ExtractToDirectory(zipPath, extractPath);
+                CopyFiles(extractPath, path);
+            }
 
             done?.Invoke();
         }
