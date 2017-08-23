@@ -140,21 +140,32 @@ public partial class MainWindow : Window
 
             var addons = ConfigManager.GetConfig();
             var updates = new List<Task>();
-            foreach (var item in addons.Items)
-            {
-                if (item != null)
-                {
-                    updates.Add(UpdateItem(item, () => loadingScreen.Increment()));
-                    item.Version = item.SiteVersion;
-                }
-            }
 
+            try
+            {
+                foreach (var item in addons.Items)
+                {
+                    if (item != null)
+                    {
+                        updates.Add(UpdateItem(item, () => loadingScreen.Increment()));
+                        item.Version = item.SiteVersion;
+                    }
+                }
+
+                await Task.WhenAll(updates);
+            }
+            catch (Exception ex)
+            {
+                loadingScreen.Close();
+                MessageBox.Show(ex.Message, "Broken", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
             dgAddons.ItemsSource = addons.Items;
             dgAddons.Items.Refresh();
 
-            await Task.WhenAll(updates);
-
             loadingScreen.Close();
+            MessageBox.Show($"{addons.Items.Count} addon might have updated.", "Update Complete", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void CopyFiles(string source, string dest)
