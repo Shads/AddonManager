@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using WoWAddonsManager.Config;
 
 namespace WoWAddonsManager.Sources
@@ -8,5 +9,6 @@ namespace WoWAddonsManager.Sources
         Task<AddonConfigItem> GetAddonDetails(string addonUrl, bool awaitConfig = false);
         Task GetDownloadUrl(AddonConfigItem config);
         Task<string> GetZipFile(AddonConfigItem config);
+        Task RefreshConfig(AddonConfig config, Action onComplete);
     }
 }

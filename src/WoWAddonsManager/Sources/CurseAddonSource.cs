@@ -28,7 +28,7 @@ namespace WoWAddonsManager.Sources
                     addon = new AddonConfigItem
                     {
                         Name = page.DocumentNode.SelectSingleNode("//div[@id='project-overview']//h2")?.InnerText,
-                        Version = page.DocumentNode.SelectSingleNode("//li[@class='newest-file']")?.InnerText?.Replace("Newest File: ", ""),
+                        SiteVersion = page.DocumentNode.SelectSingleNode("//li[@class='newest-file']")?.InnerText?.Replace("Newest File: ", ""),
                         Supports = page.DocumentNode.SelectSingleNode("//li[@class='version']")?.InnerText?.Replace("Supports: ", ""),
                         Url = addonUrl
                     };
@@ -107,7 +107,9 @@ namespace WoWAddonsManager.Sources
                 var item = config.Items[index];
                 fetches[index] = new TaskFactory().StartNew(() => 
                 {
-                    config.Items[index] = GetAddonDetails(item.Url, true).Result;
+                    var deets = GetAddonDetails(item.Url, true).Result;
+                    config.Items[index].SiteVersion = deets.SiteVersion;
+                    config.Items[index].Url = deets.Url;
                     onComplete();
                 });
             }

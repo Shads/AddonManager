@@ -1,7 +1,8 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,10 +11,7 @@ using WoWAddonsManager.Sources;
 
 namespace WoWAddonsManager
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+public partial class MainWindow : Window
     {
         private string path = string.Empty;
         private string archivePath = string.Empty;
@@ -71,19 +69,6 @@ namespace WoWAddonsManager
             MessageBox.Show("Update complete", "Finished", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void ReadConfig()
-        {
-            var addons = ConfigManager.GetConfig();
-            if (addons != null && addons.Items.Count > 0)
-            {
-                txtWowLocation.Text = addons.FolderPath;
-                dgAddons.ItemsSource = addons.Items;
-                dgAddons.Items.Refresh();
-            }
-
-            dgAddons.SelectedItem = null;
-        }
-
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
             var frmAddNew = new AddNewAddon();
@@ -127,13 +112,34 @@ namespace WoWAddonsManager
             EnsureArchive();
 
             var item = (AddonConfigItem)dgAddons.SelectedItem;
-            var zipPath = await new CurseAddonSource().GetZipFile(item);
-
-            ZipFile.ExtractToDirectory(zipPath, extractPath);
-
-            CopyFiles(extractPath, path);
+            await UpdateItem(item, null);
 
             MessageBox.Show($"{item.Name} Updated!", "Update Complete", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private async void btnUpdateAll_Click(object sender, RoutedEventArgs e)
+        {
+            EnsureArchive();
+            var loadingScreen = new LoadingScreen(dgAddons.Items.Count) { Owner = this };
+            loadingScreen.Show();
+
+            var addons = ConfigManager.GetConfig();
+            var updates = new List<Task>();
+            foreach (var item in addons.Items)
+            {
+                if (item != null)
+                {
+                    updates.Add(UpdateItem(item, () => loadingScreen.Increment()));
+                    item.Version = item.SiteVersion;
+                }
+            }
+
+            dgAddons.ItemsSource = addons.Items;
+            dgAddons.Items.Refresh();
+
+            await Task.WhenAll(updates);
+
+            loadingScreen.Close();
         }
 
         private void CopyFiles(string source, string dest)
@@ -156,6 +162,30 @@ namespace WoWAddonsManager
             extractPath = Directory.Exists("archive\\extract")
                 ? Path.Combine(Directory.GetCurrentDirectory(), "archive\\extract")
                 : Directory.CreateDirectory("archive\\extract").FullName;
+        }
+
+        private void ReadConfig()
+        {
+            var addons = ConfigManager.GetConfig();
+            if (addons != null && addons.Items.Count > 0)
+            {
+                txtWowLocation.Text = addons.FolderPath;
+                dgAddons.ItemsSource = addons.Items;
+                dgAddons.Items.Refresh();
+            }
+
+            dgAddons.SelectedItem = null;
+        }
+
+        private async Task UpdateItem(AddonConfigItem item, Action done)
+        {
+            var source = new CurseAddonSource();
+            var zipPath = await source.GetZipFile(item);
+
+            ZipFile.ExtractToDirectory(zipPath, extractPath);
+            CopyFiles(extractPath, path);
+
+            done?.Invoke();
         }
     }
 }

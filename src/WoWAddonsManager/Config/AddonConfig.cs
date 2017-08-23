@@ -25,6 +25,7 @@ namespace WoWAddonsManager.Config
         public string Name { get; set; }
         public string Path { get; set; }
         public string Version { get; set; }
+        public string SiteVersion { get; set; }
         public string Supports { get; set; }
         public string Url { get; set; }
         public string DownloadLink { get; set; }

@@ -6,9 +6,6 @@ using WoWAddonsManager.Sources;
 
 namespace WoWAddonsManager
 {
-    /// <summary>
-    /// Interaction logic for AddNewAddon.xaml
-    /// </summary>
     public partial class AddNewAddon : Window
     {
         public AddNewAddon()
@@ -40,7 +37,7 @@ namespace WoWAddonsManager
             {
                 var addon = await new CurseAddonSource().GetAddonDetails(strUrl);
                 txtName.Text = addon.Name;
-                txtVersion.Text = addon.Version;
+                txtVersion.Text = addon.SiteVersion;
                 txtSupports.Text = addon.Supports;
                 btnAdd.IsEnabled = true;
                 newItem = addon;
